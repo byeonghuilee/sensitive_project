@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Insight | 감성 분석 서비스</title>
+    <meta name="description" content="AI를 이용한 당신의 문장 속 감성 분석 서비스">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay"></div>
+    <main class="hero">
+        <header class="header">
+            <div class="logo" id="logo">Emotion Insight</div>
+        </header>
+
+        <section class="content-wrapper">
+            <h1 class="title">감정의 깊이를 <br>분석합니다.</h1>
+            <p class="description">분석하고 싶은 문장을 입력해주세요. <br>AI가 당신의 감성을 세밀하게 읽어냅니다.</p>
+
+            <div class="input-container">
+                <textarea id="textInput" placeholder="이곳에 문장을 입력하세요..." maxlength="1000"></textarea>
+                <div class="char-count"><span id="currentCharCount">0</span>/1000</div>
+                <button id="analyzeBtn">분석하기</button>
+            </div>
+
+            <div id="loading" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>감정을 분석하고 있습니다...</p>
+            </div>
+
+            <div id="resultCard" class="result-card" style="display: none;">
+                <div class="sentiment-badge" id="sentimentBadge">긍정</div>
+                <div class="confidence-wrapper">
+                    <span class="label">신뢰도</span>
+                    <div class="progress-bar">
+                        <div id="confidenceFill" class="fill"></div>
+                    </div>
+                    <span id="confidenceText" class="value">92%</span>
+                </div>
+                <p id="reasonText" class="reason">문장이 희망적이고 긍정적인 표현을 포함함</p>
+                <button id="resetBtn" class="reset-btn">다시 하기</button>
+            </div>
+
+            <div id="errorArea" class="error-message" style="display: none;"></div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

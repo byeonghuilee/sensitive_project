@@ -1,0 +1,252 @@
+:root {
+    --primary-color: #ffffff;
+    --accent-color: #38bdf8;
+    --bg-dark: #0f172a;
+    --overlay-color: rgba(15, 23, 42, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --font-main: 'Inter', sans-serif;
+    --font-title: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--primary-color);
+    background-color: var(--bg-dark);
+    background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=2070'); /* 감성적인 자연 배경 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-color);
+    z-index: 1;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.content-wrapper {
+    max-width: 600px;
+    width: 100%;
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.input-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.input-container:focus-within {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+#analyzeBtn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    background: white;
+    color: var(--bg-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#analyzeBtn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+#analyzeBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 결과 카드 스타일 */
+.result-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sentiment-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: var(--accent-color);
+}
+
+.confidence-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0;
+    transition: width 1s ease-out;
+}
+
+.reason {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 로딩 애니메이션 */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 에러 메시지 */
+.error-message {
+    color: #ff4b4b;
+    margin-top: 1rem;
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .title { font-size: 2.5rem; }
+    .content-wrapper { padding: 1rem; }
+    .hero { justify-content: center; padding-top: 5rem; }
+}
